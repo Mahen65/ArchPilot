@@ -199,7 +199,7 @@
         if (response.IsSuccessStatusCode)
         {
             var result = await response.Content.ReadFromJsonAsync<ProjectRequirementsDto>();
-            NavigationManager.NavigateTo($"/recommendations/{result.Id}");
+            NavigationManager.NavigateTo($"/recommendations/{result.Id}/{result.TenantId}/{3}");
         }
         else
         {

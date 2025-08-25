@@ -28,12 +28,12 @@ public class ProjectRequirementsController : ControllerBase
             // For demo purposes, set a default tenant ID
             if (string.IsNullOrEmpty(command.TenantId))
             {
-                command.TenantId = "demo-tenant";
+                command.TenantId =Guid.NewGuid().ToString();
             }
             
             if (string.IsNullOrEmpty(command.UserId))
             {
-                command.UserId = "demo-user";
+                command.UserId = Guid.NewGuid().ToString();
             }
 
             var result = await _mediator.Send(command);
@@ -51,7 +51,7 @@ public class ProjectRequirementsController : ControllerBase
         try
         {
             // For demo purposes, use a default tenant ID
-            var query = new GetProjectRequirementsQuery(id, "demo-tenant");
+            var query = new GetProjectRequirementsQuery(id, Guid.NewGuid());
             var result = await _mediator.Send(query);
             return Ok(result);
         }
@@ -71,7 +71,7 @@ public class ProjectRequirementsController : ControllerBase
         try
         {
             // Get the project requirements first
-            var query = new GetProjectRequirementsQuery(id, "demo-tenant");
+            var query = new GetProjectRequirementsQuery(id, Guid.NewGuid());
             var projectRequirements = await _mediator.Send(query);
 
             // Generate recommendations

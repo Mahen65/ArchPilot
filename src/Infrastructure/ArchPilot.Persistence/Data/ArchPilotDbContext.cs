@@ -129,9 +129,9 @@ public class ArchPilotDbContext : IdentityDbContext, IArchPilotDbContext
         modelBuilder.Entity<TechnologyStackItem>().HasQueryFilter(e => e.TenantId == GetCurrentTenantId());
     }
 
-    private string GetCurrentTenantId()
+    private Guid GetCurrentTenantId()
     {
         // This will be implemented with a tenant provider service
-        return string.Empty;
+        return  Guid.Empty;
     }
 }

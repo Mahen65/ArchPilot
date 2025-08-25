@@ -25,13 +25,12 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ArchPilot.API", "src\Presen
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ArchPilot.BlazorWasm", "src\Presentation\ArchPilot.BlazorWasm\ArchPilot.BlazorWasm.csproj", "{B07AFF0F-2788-4FE1-95E1-473833DC2F72}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ArchPilot.AppHost", "ArchPilot.AppHost\ArchPilot.AppHost.csproj", "{5324382C-80AA-4E26-87BD-6A5C76C9F03B}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
 		Release|Any CPU = Release|Any CPU
-	EndGlobalSection
-	GlobalSection(SolutionProperties) = preSolution
-		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
 		{AAF7EFC4-6E7C-40DB-A080-3D58123EF5F1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
@@ -58,6 +57,13 @@ Global
 		{B07AFF0F-2788-4FE1-95E1-473833DC2F72}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B07AFF0F-2788-4FE1-95E1-473833DC2F72}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B07AFF0F-2788-4FE1-95E1-473833DC2F72}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5324382C-80AA-4E26-87BD-6A5C76C9F03B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5324382C-80AA-4E26-87BD-6A5C76C9F03B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5324382C-80AA-4E26-87BD-6A5C76C9F03B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5324382C-80AA-4E26-87BD-6A5C76C9F03B}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{6DC16775-D232-4254-B2A6-A5661AF89FDA} = {94E7D4E5-6BC1-4C60-A6DE-897781B358C7}

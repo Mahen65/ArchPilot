@@ -19,11 +19,19 @@ public class CreateProjectRequirementsCommandHandler : IRequestHandler<CreatePro
 
     public async Task<ProjectRequirementsDto> Handle(CreateProjectRequirementsCommand request, CancellationToken cancellationToken)
     {
-        var projectRequirements = _mapper.Map<Domain.Entities.ProjectRequirements>(request);
-        
-        _context.ProjectRequirements.Add(projectRequirements);
-        await _context.SaveChangesAsync(cancellationToken);
+        try
+        {
+            var projectRequirements = _mapper.Map<Domain.Entities.ProjectRequirements>(request);
 
-        return _mapper.Map<ProjectRequirementsDto>(projectRequirements);
+            _context.ProjectRequirements.Add(projectRequirements);
+            await _context.SaveChangesAsync(cancellationToken);
+
+            return _mapper.Map<ProjectRequirementsDto>(projectRequirements);
+        }
+        catch (Exception ex)
+        {
+            throw ex;
+        }
+
     }
 }

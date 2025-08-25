@@ -4,7 +4,7 @@ public class TechnologyStackItemDto
 {
     public Guid Id { get; set; }
     public Guid ArchitectureRecommendationId { get; set; }
-    public string TenantId { get; set; } = string.Empty;
+    public Guid TenantId { get; set; } = Guid.Empty;
     
     public string Category { get; set; } = string.Empty;
     public string Technology { get; set; } = string.Empty;

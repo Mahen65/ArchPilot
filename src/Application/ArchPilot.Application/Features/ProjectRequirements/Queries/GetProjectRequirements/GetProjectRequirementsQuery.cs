@@ -6,9 +6,9 @@ namespace ArchPilot.Application.Features.ProjectRequirements.Queries.GetProjectR
 public class GetProjectRequirementsQuery : IRequest<ProjectRequirementsDto>
 {
     public Guid Id { get; set; }
-    public string TenantId { get; set; } = string.Empty;
+    public Guid TenantId { get; set; } = Guid.Empty;
 
-    public GetProjectRequirementsQuery(Guid id, string tenantId)
+    public GetProjectRequirementsQuery(Guid id, Guid tenantId)
     {
         Id = id;
         TenantId = tenantId;

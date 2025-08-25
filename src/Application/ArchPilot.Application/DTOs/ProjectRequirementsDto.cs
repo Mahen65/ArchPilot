@@ -5,8 +5,8 @@ namespace ArchPilot.Application.DTOs;
 public class ProjectRequirementsDto
 {
     public Guid Id { get; set; }
-    public string TenantId { get; set; } = string.Empty;
-    public string UserId { get; set; } = string.Empty;
+    public Guid TenantId { get; set; } = Guid.Empty;
+    public Guid UserId { get; set; } = Guid.Empty;
     
     // Core Questions
     public ProjectType ProjectType { get; set; }

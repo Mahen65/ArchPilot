@@ -4,7 +4,7 @@ public class ArchitectureRecommendationDto
 {
     public Guid Id { get; set; }
     public Guid ProjectRequirementsId { get; set; }
-    public string TenantId { get; set; } = string.Empty;
+    public Guid TenantId { get; set; } = Guid.Empty;
     
     // Recommendation Details
     public string ArchitecturePattern { get; set; } = string.Empty;

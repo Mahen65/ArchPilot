@@ -1,4 +1,4 @@
-@page "/recommendations/{Id:guid}"
+@page "/recommendations/{Id:guid}/{TenantId:guid}/{Count:int}"
 @using ArchPilot.Application.DTOs
 @using System.Net.Http.Json
 @inject HttpClient Http
@@ -48,7 +48,8 @@
 @code {
     [Parameter]
     public Guid Id { get; set; }
-
+    public Guid TenantId { get; set; }
+    public int Count { get; set; }
     private bool _loading = true;
     private List<ArchitectureRecommendationDto> _recommendations = new();
 
@@ -56,7 +57,7 @@
     {
         try
         {
-            var response = await Http.GetAsync($"api/recommendations/{Id}");
+            var response = await Http.GetAsync($"api/recommendations/{Id}/{TenantId}/{Count}");
             if (response.IsSuccessStatusCode)
             {
                 _recommendations = await response.Content.ReadFromJsonAsync<List<ArchitectureRecommendationDto>>();

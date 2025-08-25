@@ -8,7 +8,7 @@ public class CreateProjectRequirementsCommand : IRequest<ProjectRequirementsDto>
 {
     public string TenantId { get; set; } = string.Empty;
     public string UserId { get; set; } = string.Empty;
-    
+
     // Core Questions
     public ProjectType ProjectType { get; set; }
     public ProjectScale ProjectScale { get; set; }

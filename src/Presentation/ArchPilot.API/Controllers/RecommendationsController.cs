@@ -20,7 +20,7 @@ public class RecommendationsController : ControllerBase
     {
         try
         {
-            var query = new GetRecommendationQuery(id, "demo-tenant", count);
+            var query = new GetRecommendationQuery(id,Guid.Empty, count);
             var result = await _mediator.Send(query);
             return Ok(result);
         }

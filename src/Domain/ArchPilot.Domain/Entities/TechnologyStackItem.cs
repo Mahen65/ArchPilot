@@ -5,8 +5,8 @@ namespace ArchPilot.Domain.Entities;
 public class TechnologyStackItem : BaseEntity
 {
     public Guid ArchitectureRecommendationId { get; set; }
-    public string TenantId { get; set; } = string.Empty;
-    
+    public Guid TenantId { get; set; } = Guid.Empty;
+
     public string Category { get; set; } = string.Empty; // Frontend, Backend, Database, Infrastructure, etc.
     public string Technology { get; set; } = string.Empty;
     public string Version { get; set; } = string.Empty;

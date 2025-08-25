@@ -5,7 +5,7 @@ namespace ArchPilot.Domain.Entities;
 
 public class ProjectRequirements : BaseEntity
 {
-    public string TenantId { get; set; } = string.Empty;
+    public Guid TenantId { get; set; } = Guid.Empty;
     public string UserId { get; set; } = string.Empty;
     
     // Core Questions
