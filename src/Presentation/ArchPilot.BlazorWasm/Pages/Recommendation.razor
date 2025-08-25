@@ -1,0 +1,78 @@
+@page "/recommendations/{Id:guid}"
+@using ArchPilot.Application.DTOs
+@using System.Net.Http.Json
+@inject HttpClient Http
+@inject NavigationManager NavigationManager
+
+<PageTitle>Architecture Recommendations</PageTitle>
+
+<MudContainer>
+    <MudText Typo="Typo.h4" GutterBottom="true">Architecture Recommendations</MudText>
+
+    @if (_loading)
+    {
+        <MudProgressCircular Color="Color.Primary" Indeterminate="true" />
+    }
+    else if (_recommendations != null && _recommendations.Any())
+    {
+        <MudGrid Spacing="3">
+            @foreach (var recommendation in _recommendations)
+            {
+                <MudItem xs="12" sm="6" md="4">
+                    <MudCard>
+                        <MudCardHeader>
+                            <CardHeaderContent>
+                                <MudText Typo="Typo.h6">@recommendation.ArchitecturePattern</MudText>
+                            </CardHeaderContent>
+                        </MudCardHeader>
+                        <MudCardContent>
+                            <MudText Typo="Typo.body2">@recommendation.Justification</MudText>
+                            <MudDivider Class="my-4" />
+                            <MudText Typo="Typo.subtitle1" GutterBottom="true">Technology Stack</MudText>
+                            @foreach (var tech in recommendation.TechnologyStackItems)
+                            {
+                                <MudChip T="string">@tech.Technology</MudChip>
+                            }
+                        </MudCardContent>
+                    </MudCard>
+                </MudItem>
+            }
+        </MudGrid>
+    }
+    else
+    {
+        <MudText Typo="Typo.body1">No recommendations found.</MudText>
+    }
+</MudContainer>
+
+@code {
+    [Parameter]
+    public Guid Id { get; set; }
+
+    private bool _loading = true;
+    private List<ArchitectureRecommendationDto> _recommendations = new();
+
+    protected override async Task OnInitializedAsync()
+    {
+        try
+        {
+            var response = await Http.GetAsync($"api/recommendations/{Id}");
+            if (response.IsSuccessStatusCode)
+            {
+                _recommendations = await response.Content.ReadFromJsonAsync<List<ArchitectureRecommendationDto>>();
+            }
+            else
+            {
+                Console.WriteLine($"Error loading recommendations: {response.ReasonPhrase}");
+            }
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine($"Error loading recommendations: {ex.Message}");
+        }
+        finally
+        {
+            _loading = false;
+        }
+    }
+}

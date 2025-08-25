@@ -1,0 +1,66 @@
+﻿@page "/"
+
+<PageTitle>Arch Pilot - Home</PageTitle>
+
+<MudContainer>
+    <MudText Typo="Typo.h3" GutterBottom="true">Welcome to Arch Pilot</MudText>
+    <MudText Typo="Typo.subtitle1" Class="mb-4">
+        Your intelligent SaaS architecture recommendation platform.
+    </MudText>
+    
+    <MudPaper Class="pa-4 mb-8">
+        <MudText Typo="Typo.h5" GutterBottom="true">Get Started</MudText>
+        <MudText Class="mb-4">
+            Ready to find the perfect architecture for your next project? 
+            Start our comprehensive questionnaire to receive tailored recommendations based on your unique requirements.
+        </MudText>
+        <MudButton Variant="Variant.Filled" Color="Color.Primary" Href="/questionnaire" Size="Size.Large">
+            Start Questionnaire
+        </MudButton>
+    </MudPaper>
+    
+    <MudGrid Spacing="4">
+        <MudItem xs="12" md="4">
+            <MudCard>
+                <MudCardHeader>
+                    <CardHeaderContent>
+                        <MudText Typo="Typo.h6">Intelligent Recommendations</MudText>
+                    </CardHeaderContent>
+                </MudCardHeader>
+                <MudCardContent>
+                    <MudText>
+                        Our rule-based engine analyzes your project needs, team skills, and constraints to suggest the best architecture patterns and technology stacks.
+                    </MudText>
+                </MudCardContent>
+            </MudCard>
+        </MudItem>
+        <MudItem xs="12" md="4">
+            <MudCard>
+                <MudCardHeader>
+                    <CardHeaderContent>
+                        <MudText Typo="Typo.h6">Comprehensive Analysis</MudText>
+                    </CardHeaderContent>
+                </MudCardHeader>
+                <MudCardContent>
+                    <MudText>
+                        We consider everything from project scale and performance priorities to budget and regional compliance to provide holistic recommendations.
+                    </MudText>
+                </MudCardContent>
+            </MudCard>
+        </MudItem>
+        <MudItem xs="12" md="4">
+            <MudCard>
+                <MudCardHeader>
+                    <CardHeaderContent>
+                        <MudText Typo="Typo.h6">Actionable Insights</MudText>
+                    </CardHeaderContent>
+                </MudCardHeader>
+                <MudCardContent>
+                    <MudText>
+                        Receive detailed implementation roadmaps, trade-offs, and alternatives to make informed decisions and accelerate your development.
+                    </MudText>
+                </MudCardContent>
+            </MudCard>
+        </MudItem>
+    </MudGrid>
+</MudContainer>
