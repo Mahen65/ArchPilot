@@ -15,4 +15,9 @@
     <PackageReference Include="Aspire.Hosting.AppHost" Version="9.0.0" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\src\Presentation\ArchPilot.API\ArchPilot.API.csproj" />
+    <ProjectReference Include="..\src\Presentation\ArchPilot.BlazorWasm\ArchPilot.BlazorWasm.csproj" />
+  </ItemGroup>
+
 </Project>

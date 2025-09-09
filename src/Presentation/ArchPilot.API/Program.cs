@@ -11,13 +11,15 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
+var apiBaseUrlHttp = builder.Configuration["ApiSettings:BaseUrlHttp"];
+var apiBaseUrlHttps = builder.Configuration["ApiSettings:BaseUrlHttps"];
 
 // Add CORS
 builder.Services.AddCors(options =>
 {
     options.AddPolicy("AllowBlazorWasm", policy =>
     {
-        policy.WithOrigins("https://localhost:5001", "http://localhost:5000", "http://localhost:5130")
+        policy.WithOrigins(apiBaseUrlHttp??"",apiBaseUrlHttps??"")
               .AllowAnyHeader()
               .AllowAnyMethod();
     });

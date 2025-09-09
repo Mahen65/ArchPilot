@@ -48,7 +48,9 @@
 @code {
     [Parameter]
     public Guid Id { get; set; }
+    [Parameter]
     public Guid TenantId { get; set; }
+    [Parameter]
     public int Count { get; set; }
     private bool _loading = true;
     private List<ArchitectureRecommendationDto> _recommendations = new();

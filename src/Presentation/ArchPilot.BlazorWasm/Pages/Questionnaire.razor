@@ -60,14 +60,18 @@
                     </MudRadioGroup>
 
                     <MudText Typo="Typo.subtitle1" GutterBottom="true" Class="mt-4">Team Experience</MudText>
-                    <MudSelect T="int" 
-                                  @bind-SelectedValues="_selectedExperience" 
-                                  MultiSelection="true" 
-                                  Label="Select your team's experience"
-                                  Required="true" RequiredError="Team experience is required.">
+                    <MudSelect T="Option"
+                               @bind-SelectedValues="_selectedExperience"
+                               MultiSelection="true"
+                               Label="Select your team's experience"
+                               Variant="Variant.Outlined"
+                               SelectAll="true"
+                               SelectAllText="Select All Technologies"
+                               ToStringFunc="@(option => option?.Name ?? string.Empty)">
+                               >
                         @foreach (var option in _options.TechnologyExperiences)
                         {
-                            <MudSelectItem Value="@option.Value">@option.Name</MudSelectItem>
+                            <MudSelectItem T="Option" Value="@option">@option.Name</MudSelectItem>
                         }
                     </MudSelect>
                 </MudStep>
@@ -143,7 +147,7 @@
     private bool _loading = true;
     private QuestionnaireOptions _options = new();
     private CreateProjectRequirementsCommand _command = new();
-    private IEnumerable<int> _selectedExperience = new List<int>();
+    private IEnumerable<Option> _selectedExperience = new List<Option>();
     private int _totalSteps = 4; // Total number of steps
     private EditContext _editContext;
 
@@ -193,8 +197,8 @@
 
     private async Task Submit()
     {
-        _command.TeamExperience = (Domain.Enums.TechnologyExperience)_selectedExperience.Sum();
-        
+        //_command.TeamExperience = (Domain.Enums.TechnologyExperience)_selectedExperience.Sum();
+        var ex = _selectedExperience.ToList();
         var response = await Http.PostAsJsonAsync("api/ProjectRequirements", _command);
         if (response.IsSuccessStatusCode)
         {
@@ -206,6 +210,7 @@
             Console.WriteLine("Error submitting questionnaire");
         }
     }
+
 
     public class QuestionnaireOptions
     {
@@ -227,6 +232,10 @@
     {
         public int Value { get; set; }
         public string Name { get; set; } = string.Empty;
+        public override string ToString()
+        { 
+            return Name;
+        }
     }
 }
 

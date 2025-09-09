@@ -15,12 +15,12 @@ public class RecommendationsController : ControllerBase
         _mediator = mediator;
     }
 
-    [HttpGet("{id}")]
-    public async Task<IActionResult> GetRecommendations(Guid id, [FromQuery] int count = 3)
+    [HttpGet("{id}/{TenantId}/{Count}")]
+    public async Task<IActionResult> GetRecommendations(Guid  id,Guid TenantId,int Count)
     {
         try
         {
-            var query = new GetRecommendationQuery(id,Guid.Empty, count);
+            var query = new GetRecommendationQuery(id, TenantId, Count);
             var result = await _mediator.Send(query);
             return Ok(result);
         }

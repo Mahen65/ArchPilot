@@ -32,10 +32,10 @@ public class ProjectRequirementsController : ControllerBase
             }
             
             if (string.IsNullOrEmpty(command.UserId))
-            {
+            { 
                 command.UserId = Guid.NewGuid().ToString();
             }
-
+  
             var result = await _mediator.Send(command);
             return CreatedAtAction(nameof(GetProjectRequirements), new { id = result.Id }, result);
         }

@@ -1,15 +1,32 @@
-<Project Sdk="Microsoft.NET.Sdk.BlazorWebAssembly">
+﻿<Project Sdk="Microsoft.NET.Sdk.BlazorWebAssembly">
 
   <PropertyGroup>
     <TargetFramework>net8.0</TargetFramework>
     <Nullable>enable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>
     <ServiceWorkerAssetsManifest>service-worker-assets.js</ServiceWorkerAssetsManifest>
+    <BlazorWebAssemblyLoadAllGlobalizationData>false</BlazorWebAssemblyLoadAllGlobalizationData>
+    <BlazorEnableCompression>true</BlazorEnableCompression>
+    <BlazorWebAssemblyPreserveCollationData>false</BlazorWebAssemblyPreserveCollationData>
   </PropertyGroup>
+  <!-- Add this target -->
+  <Target Name="GenerateApiConfig" BeforeTargets="Build">
+    <PropertyGroup>
+      <ApiBaseUrl Condition="'$(ApiBaseUrl)' == ''">http://localhost:5219/</ApiBaseUrl>
+    </PropertyGroup>
 
+    <ItemGroup> 
+      <Content Include="wwwroot/appsettings.json" Condition="!Exists('wwwroot/appsettings.json')">
+        <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      </Content>
+    </ItemGroup>
+
+    <WriteLinesToFile File="wwwroot/appsettings.json" Lines="{&quot;ApiBaseUrl&quot;: &quot;$(ApiBaseUrl)&quot;}" Overwrite="true" />
+  </Target>
   <ItemGroup>
     <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly" Version="8.0.8" />
     <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly.DevServer" Version="8.0.8" PrivateAssets="all" />
+    <PackageReference Include="Microsoft.Extensions.ServiceDiscovery" Version="9.4.1" />
     <PackageReference Include="MudBlazor" Version="8.11.0" />
     <PackageReference Include="Fluxor.Blazor.Web" Version="5.9.1" />
     <PackageReference Include="Fluxor.Blazor.Web.ReduxDevTools" Version="5.9.1" />
